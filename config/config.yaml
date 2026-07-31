@@ -1,0 +1,49 @@
+pipeline:
+  name: "weather_etl_pipeline"
+  retention_days: 30
+  raw_data_dir: "data/raw"
+
+logging:
+  config_file: "config/logging_config.py"
+  log_file: "logs/pipeline.log"
+  log_to_file: true
+
+cities:
+  - id: "LON"
+    name: "London"
+    country: "United Kingdom"
+    latitude: 51.5074
+    longitude: -0.1278
+    timezone: "Europe/London"
+    
+  - id: "NYC"
+    name: "New York"
+    country: "United States"
+    latitude: 40.7128
+    longitude: -74.0060
+    timezone: "America/New_York"
+    
+  - id: "TYO"
+    name: "Tokyo"
+    country: "Japan"
+    latitude: 35.6762
+    longitude: 139.6503
+    timezone: "Asia/Tokyo"
+    
+  - id: "DXB"
+    name: "Dubai"
+    country: "United Arab Emirates"
+    latitude: 25.2048
+    longitude: 55.2708
+    timezone: "Asia/Dubai"
+
+api:
+  base_url: "https://api.open-meteo.com/v1/forecast"
+  hourly_metrics:
+    - "temperature_2m"
+    - "relative_humidity_2m"
+    - "precipitation"
+    - "wind_speed_10m"
+    - "surface_pressure"
+  timeout_seconds: 15
+  max_retries: 3
