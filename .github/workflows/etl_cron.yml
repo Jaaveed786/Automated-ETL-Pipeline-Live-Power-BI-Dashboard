@@ -1,0 +1,41 @@
+name: ETL Weather Pipeline — Hourly Cron
+
+on:
+  # Runs every hour at minute 0
+  schedule:
+    - cron: "0 * * * *"
+  # Allow manual trigger from GitHub Actions UI
+  workflow_dispatch:
+
+jobs:
+  etl_run:
+    name: Run ETL Pipeline
+    runs-on: ubuntu-latest
+
+    env:
+      # Injected from GitHub Repository Secrets
+      # Set these in: Settings → Secrets and variables → Actions
+      DATABASE_URL:      ${{ secrets.DATABASE_URL }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      LOG_LEVEL:         INFO
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run ETL Pipeline
+        run: python pipeline.py --run-once
+
+      - name: Notify on Failure
+        if: failure()
+        run: |
+          echo "Pipeline failed. Slack webhook alert will be sent by pipeline.py on exception."
