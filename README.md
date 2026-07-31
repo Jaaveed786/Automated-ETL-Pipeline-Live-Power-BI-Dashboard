@@ -26,6 +26,18 @@ Most student BI projects are static: upload a CSV, make a chart, done. This proj
 
 ---
 
+## 🌐 Live Interactive Demo & Dashboard Sharing
+
+Recruiters and hiring managers can explore this project **without downloading any files or installing software**:
+
+- **Option A (Live Power BI Web Link):** Publish the dashboard to Power BI Service (`app.powerbi.com`) ➔ File ➔ Embed report ➔ Publish to web (public) to generate an interactive public web link.
+- **Option B (GitHub Web Repository):** Browse full source code, Star Schema DDL, DAX measures, and automated pytest suite directly at: [`https://github.com/Jaaveed786/Automated-ETL-Pipeline-Live-Power-BI-Dashboard`](https://github.com/Jaaveed786/Automated-ETL-Pipeline-Live-Power-BI-Dashboard).
+- **Option C (15-Second Screen Recording GIF):** Embed a short screen recording GIF of interactive dashboard slicer filters in the repository.
+
+📖 *For step-by-step instructions on generating public embed links and sharing with recruiters, see [`docs/live_sharing_guide.md`](docs/live_sharing_guide.md).*
+
+---
+
 ## System Architecture
 
 ```
