@@ -1,0 +1,3 @@
+# placeholder — raw JSON dumps archived here by pipeline.py
+# Files follow naming convention: weather_raw_YYYY-MM-DD_HHMMSS.json
+# Files older than 30 days are automatically pruned by src/utils/retention.py
