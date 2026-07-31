@@ -1,0 +1,2 @@
+# placeholder — log files written here by pipeline when LOG_TO_FILE=true
+# Managed by logging_config.py RotatingFileHandler (max 5MB × 3 backups)
